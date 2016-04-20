@@ -13,12 +13,11 @@ import br.edu.fa7.model.ErrorInfo;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
-	
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    @ExceptionHandler(NotFoundException.class)
-    @ResponseBody
-    public ErrorInfo handleConflict(HttpServletRequest req, Exception ex) {
-        return new ErrorInfo(req.getRequestURI(), ex);
-    }
 
+	@ResponseStatus(HttpStatus.NOT_FOUND)
+	@ExceptionHandler(NotFoundException.class)
+	@ResponseBody
+	public ErrorInfo erro1(HttpServletRequest req, Exception ex) {
+		return new ErrorInfo(req.getRequestURI(), ex);
+	}
 }

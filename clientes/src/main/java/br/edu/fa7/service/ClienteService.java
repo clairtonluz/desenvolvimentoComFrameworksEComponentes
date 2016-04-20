@@ -21,7 +21,11 @@ public class ClienteService {
 	}
 
 	public Cliente find(Integer id) {
-		return clienteRepository.find(id);
+		Cliente cliente = clienteRepository.find(id);
+		if(cliente == null) {
+			throw new NotFoundException("Cliente não encontrado");
+		}
+		return cliente;
 	}
 
 	public Cliente save(Cliente cliente) {
@@ -30,9 +34,6 @@ public class ClienteService {
 
 	public void delete(Integer id) {
 		Cliente cliente = find(id);
-		if(cliente == null) {
-			throw new NotFoundException("Cliente não encontrado");
-		}
 		clienteRepository.delete(cliente);
 	}
 }

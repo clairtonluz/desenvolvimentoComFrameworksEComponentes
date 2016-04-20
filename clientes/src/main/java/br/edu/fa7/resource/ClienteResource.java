@@ -21,33 +21,32 @@ public class ClienteResource {
 	@Autowired
 	private ClienteService clienteService;
 
-	@RequestMapping(method=RequestMethod.GET)
+	@RequestMapping(method = RequestMethod.GET)
 	public List<Cliente> findAll() {
 		return clienteService.findAll();
 	}
 
-	@RequestMapping(value="{id}", method=RequestMethod.GET)
+	@RequestMapping(value = "{id}", method = RequestMethod.GET)
 	public Cliente find(@PathVariable Integer id) {
 		Cliente cliente = clienteService.find(id);
-		if(cliente == null) {
+		if (cliente == null) {
 			throw new NotFoundException("Cliente não encontrado");
 		}
 		return cliente;
 	}
-	
-	@RequestMapping(method=RequestMethod.POST)
+
+	@RequestMapping(method = RequestMethod.POST)
 	public Cliente save(@RequestBody Cliente cliente) {
 		return clienteService.save(cliente);
 	}
 
-	@RequestMapping(value="{id}", method=RequestMethod.PUT)
+	@RequestMapping(value = "{id}", method = RequestMethod.PUT)
 	public Cliente atualizar(@RequestBody Cliente cliente) {
 		return clienteService.save(cliente);
 	}
-	
-	@RequestMapping(value="{id}", method=RequestMethod.DELETE)
+
+	@RequestMapping(value = "{id}", method = RequestMethod.DELETE)
 	public void delete(@PathVariable Integer id) {
 		clienteService.delete(id);
 	}
-
 }
